@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-gradient-to-br from-gray-900 to-gray-800 text-white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.light {
+  @apply bg-gray-100 text-black;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out forwards;
+}
+
+.bg-dark-pattern {
+  background: linear-gradient(135deg, #1e293b 25%, #0f172a 75%);
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.bg-light-pattern {
+  background: linear-gradient(135deg, #f8fafc 25%, #e2e8f0 75%);
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.glass-card {
+  @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 shadow-xl;
+}
+
+.button-hover {
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95;
+}
+
+.candle-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
