@@ -25,6 +25,17 @@ export default function TributePage() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    const audioElement = document.getElementById("background-audio");
+    // Remove muted attribute after a short delay
+    setTimeout(() => {
+      audioElement.muted = false;
+      audioElement.play().catch((error) => {
+        console.error("Error playing audio:", error);
+      });
+    }, 2000); // Adjust the delay as needed
+  }, []);
+
   const triggerEmojiAnimation = (count) => {
     const newEmojis = Array.from({ length: count }, () => ({
       id: uuidv4(), // Generate a unique ID for each emoji
@@ -69,7 +80,7 @@ export default function TributePage() {
 
   return (
     <div className={`flex flex-col items-center min-h-screen ${theme === "dark" ? "bg-dark-pattern text-white" : "bg-light-pattern text-black"} p-6`}>
-      <audio autoPlay loop controls style={{ display: "none" }}>
+      <audio id="background-audio" autoPlay loop muted controls style={{ display: "none" }}>
         <source src="/background-music.mp3" type="audio/mpeg" />
         <source src="/background-music.ogg" type="audio/ogg" />
         <source src="/background-music.wav" type="audio/wav" />
